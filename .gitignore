@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Generated folders
+**/build
+
+.idea
+**/.idea
