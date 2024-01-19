@@ -1,0 +1,20 @@
+include("${CMAKE_CURRENT_LIST_DIR}/CppMakeTargets.cmake")
+
+set(CPPMAKE_CMAKE_ROOT ${CMAKE_CURRENT_LIST_DIR})
+
+function(cppmake)
+    set(CPPMAKE_RUNTIME_DIR "${PROJECT_SOURCE_DIR}/cppmake")
+    execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${CPPMAKE_CMAKE_ROOT}/CppMakeBuilder.cmake ${CPPMAKE_RUNTIME_DIR}/CMakeLists.txt)
+    set(CMAKE_TRY_COMPILE_PLATFORM_VARIABLES CppMake_DIR)
+    try_compile(BUILD_CONFIGURE_SUCCESS
+            PROJECT BUILDER
+            SOURCE_DIR ${CPPMAKE_RUNTIME_DIR}
+            BINARY_DIR "${CPPMAKE_RUNTIME_DIR}/build"
+            OUTPUT_VARIABLE CPPMAKE_GEN_RESULT
+    )
+    message(${CPPMAKE_GEN_RESULT})
+    set(CPPMAKE_BUILDER_CMD "${CPPMAKE_RUNTIME_DIR}/build/builder${CMAKE_EXECUTABLE_SUFFIX}")
+    message(Running ${CPPMAKE_BUILDER_CMD})
+    execute_process(COMMAND ${CPPMAKE_BUILDER_CMD} WORKING_DIRECTORY ${CPPMAKE_RUNTIME_DIR}/build)
+    include("${CPPMAKE_RUNTIME_DIR}/build/generated.cmake")
+endfunction()

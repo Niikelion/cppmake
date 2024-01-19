@@ -1,0 +1,4 @@
+#ifndef CPPMAKE_UTILS_GUARD
+#define CPPMAKE_UTILS_GUARD
+
+#endif
