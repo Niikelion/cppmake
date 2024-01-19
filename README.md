@@ -17,6 +17,10 @@ To use `CppMake` you need `CMake >= 3.25` and `CMake` supported `c++` compiler i
 
 After installing `CppMake` as `CMake` package, copy contents of `example` directory to your project root and configure cmake project as normal.
 
+## Examples
+
+* [minimal example](example)
+
 ## How it works?
 
 `CppMake` generates `CMake` files based on configuration defined in `build.cpp` in the root of the project.
