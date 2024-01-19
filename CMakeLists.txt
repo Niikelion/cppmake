@@ -4,16 +4,18 @@ project(CppMake VERSION 0.0.1 LANGUAGES CXX)
 
 add_library(CppMakeLib)
 target_include_directories(CppMakeLib PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lib>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lib/include>
         $<INSTALL_INTERFACE:lib>
 )
 
 set(CPPMAKE_LIB_HEADERS
-        lib/CppMake/Project.hpp
-        lib/CppMake/Target.hpp
-        lib/CppMake/Application.hpp
-        lib/CppMake/Utils.hpp
+        Project.hpp
+        Target.hpp
+        Application.hpp
+        Utils.hpp
 )
+
+list(TRANSFORM CPPMAKE_LIB_HEADERS PREPEND lib/include/CppMake/)
 
 target_sources(CppMakeLib PRIVATE
         ${CPPMAKE_LIB_HEADERS}

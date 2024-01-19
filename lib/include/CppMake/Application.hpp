@@ -2,7 +2,7 @@
 #define CPPMAKE_APP_GUARD
 
 #include <vector>
-#include "CppMake/Target.hpp"
+#include "Target.hpp"
 
 class Application: public ITarget
 {

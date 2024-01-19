@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 #include <concepts>
-#include "CppMake/Target.hpp"
+#include "Target.hpp"
 
 class Project
 {

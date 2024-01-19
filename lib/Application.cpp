@@ -1,4 +1,4 @@
-#include "CppMake/Application.hpp"
+#include "include/CppMake/Application.hpp"
 
 Application::Application(const std::string& name): ITarget(name) {}
 Application::Application(const std::string& name, const std::vector<std::string>& sources): ITarget(name), sources(sources) {}

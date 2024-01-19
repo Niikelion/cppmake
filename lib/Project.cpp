@@ -2,7 +2,7 @@
 #include <string>
 #include <utility>
 
-#include "CppMake/Project.hpp"
+#include "include/CppMake/Project.hpp"
 
 Project::Project(const std::string& name): name(name) {}
 Project::~Project() {
