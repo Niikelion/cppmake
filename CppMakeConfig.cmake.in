@@ -12,7 +12,9 @@ function(cppmake)
             BINARY_DIR "${CPPMAKE_RUNTIME_DIR}/build"
             OUTPUT_VARIABLE CPPMAKE_GEN_RESULT
     )
-    message(${CPPMAKE_GEN_RESULT})
+    if (NOT ${BUILD_CONFIGURE_SUCCESS})
+        message(${CPPMAKE_GEN_RESULT})
+    endif()
     set(CPPMAKE_BUILDER_CMD "${CPPMAKE_RUNTIME_DIR}/build/builder${CMAKE_EXECUTABLE_SUFFIX}")
     message(Running ${CPPMAKE_BUILDER_CMD})
     execute_process(COMMAND ${CPPMAKE_BUILDER_CMD} WORKING_DIRECTORY ${CPPMAKE_RUNTIME_DIR}/build)
