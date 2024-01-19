@@ -3,6 +3,8 @@
 
 [TheReclif](https://github.com/TheReclif) is the original author behind the idea of CppMake.
 
+`CppMake` is in the PoC phase of development. It is not advised to use in production.
+
 ## What is CppMake?
 
 CppMake is build tool aimed to replace `CMake` for building `c++` projects.
