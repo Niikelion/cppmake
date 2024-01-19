@@ -4,7 +4,7 @@
 #include <vector>
 #include "Target.hpp"
 
-class Application: public ITarget
+class Application: public LocalTarget
 {
 private:
     std::vector<std::string> sources;
@@ -12,7 +12,7 @@ public:
     Application(const std::string& name);
     Application(const std::string& name, const std::vector<std::string>& sources);
 
-    void generate(std::ostream &stream) const override;
+    void generate(Generator &stream) const override;
     Application& addSources(const std::vector<std::string>& sources);
 };
 

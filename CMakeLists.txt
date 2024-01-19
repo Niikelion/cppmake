@@ -13,6 +13,7 @@ set(CPPMAKE_LIB_HEADERS
         Target.hpp
         Application.hpp
         Utils.hpp
+        Generator.hpp
 )
 
 list(TRANSFORM CPPMAKE_LIB_HEADERS PREPEND lib/include/CppMake/)
@@ -22,6 +23,8 @@ target_sources(CppMakeLib PRIVATE
         lib/Project.cpp
         lib/Application.cpp
         lib/Target.cpp
+        lib/Generator.cpp
+        lib/Utils.cpp
 )
 
 set_target_properties(CppMakeLib PROPERTIES

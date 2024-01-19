@@ -1,18 +1,24 @@
 #include "include/CppMake/Application.hpp"
+#include "CppMake/Utils.hpp"
 
-Application::Application(const std::string& name): ITarget(name) {}
+Application::Application(const std::string& name): LocalTarget(name) {}
 Application::Application(const std::string& name, const std::vector<std::string>& sources): ITarget(name), sources(sources) {}
 
-void Application::generate(std::ostream& stream) const
+void Application::generate(Generator& stream) const
 {
-    stream << "add_executable(" << name << ")\n";
+    stream.putLine("add_executable({name})", { { "name", name } });
+
 
     if (!sources.empty())
     {
-        stream << "target_sources(" << name << " PRIVATE\n";
+        std::vector<std::string> s;
         for (const auto& source: sources)
-            stream << "\"" << source << "\"\n";
-        stream << ")\n";
+            s.push_back("\"" + source + "\"");
+
+        stream.putLine("target_sources({name} PRIVATE {sources})", {
+            { "name", name },
+            { "sources", join(s, " ") }
+        });
     }
 }
 
